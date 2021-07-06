@@ -39,6 +39,12 @@ Modified by : Millan Kaul
   </head>
 
   <body>
+      <div class="header">
+      <h2>Scroll Indicator</h2>
+      <div class="progress-container">
+        <div class="progress-bar" id="progressBar"></div>
+      </div>
+    </div>
     <!-- header -->
     <header class="w3l-header header" id="header">
       <div class="hero-header-11">
@@ -700,6 +706,8 @@ SEWTLYqbjwZ54nOGPjX4ylTVhejfz5Mn/DmjuzOxzNVxJW5Eza46vBli4EIek01YAKpABX9lG4lx
       };
 
       function scrollFunction() {
+	// scroll bar function
+	 scrollProgress()
         if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
           document.getElementById("movetop").style.display = "block";
         } else {
@@ -710,6 +718,14 @@ SEWTLYqbjwZ54nOGPjX4ylTVhejfz5Mn/DmjuzOxzNVxJW5Eza46vBli4EIek01YAKpABX9lG4lx
 	if ($("#navbarSupportedContent").hasClass("show")) {
           $("#navbarSupportedContent").removeClass("show");
         }
+      }
+	      
+	      
+      function scrollProgress() {
+        var winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+        var height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+        var scrolled = (winScroll / height) * 100;
+        document.getElementById("progressBar").style.width = scrolled + "%";
       }
 
       // When the user clicks on the button, scroll to the top of the document
